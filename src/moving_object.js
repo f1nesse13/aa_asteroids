@@ -11,5 +11,11 @@ MovingObject.prototype.draw = function(ctx) {
   ctx.fillStyle = this.color;
   ctx.fill();
 };
-MovingObject.prototype.move = function(ctx) {};
+MovingObject.prototype.move = function(ctx) {
+  ctx.beginPath();
+  const moveBy = [(this.pos[0] += this.vel[0]), (this.pos[1] += this.vel[1])];
+  ctx.arc(moveBy[0], moveBy[1], this.radius, 0, Math.PI * 2, false);
+  ctx.fillStyle = this.color;
+  ctx.fill();
+};
 module.exports = MovingObject;
