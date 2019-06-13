@@ -104,7 +104,7 @@ eval("const MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/mo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("function MovingObject(options) {\n  this.pos = options.pos;\n  this.vel = options.vel;\n  this.radius = options.radius;\n  this.color = options.color;\n}\n\nMovingObject.prototype.draw = function(ctx) {\n  ctx.beginPath();\n  ctx.arc(this.pos[0], this.pos[1], this.radius, 0, Math.PI * 2, false);\n  ctx.fillStyle = this.color;\n  ctx.fill();\n};\nMovingObject.prototype.move = function(ctx) {\n  ctx.beginPath();\n  const moveBy = [(this.pos[0] += this.vel[0]), (this.pos[1] += this.vel[1])];\n  ctx.arc(moveBy[0], moveBy[1], this.radius, 0, Math.PI * 2, false);\n  ctx.fillStyle = this.color;\n  ctx.fill();\n};\nmodule.exports = MovingObject;\n\n\n//# sourceURL=webpack:///./src/moving_object.js?");
+eval("function MovingObject(options) {\n  this.pos = options.pos;\n  this.vel = options.vel;\n  this.radius = options.radius;\n  this.color = options.color;\n}\n\nMovingObject.prototype.draw = function(ctx) {\n  ctx.beginPath();\n  ctx.arc(this.pos[0], this.pos[1], this.radius, 0, Math.PI * 2, false);\n  ctx.fillStyle = this.color;\n  ctx.fill();\n};\nMovingObject.prototype.move = function(ctx) {\n  this.pos[0] += this.vel[0];\n  this.pos[1] += this.vel[1];\n};\n\nmodule.exports = MovingObject;\n\n\n//# sourceURL=webpack:///./src/moving_object.js?");
 
 /***/ })
 
