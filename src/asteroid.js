@@ -6,13 +6,14 @@ var Asteroid = function(options) {
     pos: options.pos,
     vel: Util.randomVec(Asteroid.RADIUS),
     radius: Asteroid.RADIUS,
-    color: Asteroid.COLOR
+    color: Asteroid.COLOR,
+    game: options.game
   });
 };
 
 Util.inherits(Asteroid, MovingObject);
 
-Asteroid.RADIUS = 35;
+Asteroid.RADIUS = 40;
 Asteroid.COLOR = '#a33';
 
 module.exports = Asteroid;
