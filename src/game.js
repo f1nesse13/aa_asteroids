@@ -45,4 +45,22 @@ Game.prototype.moveObjects = function(ctx) {
   this.draw(ctx);
 };
 
+Game.prototype.wrap = function(pos) {
+  var posX = pos[0];
+  var posY = pos[1];
+  if (pos[0] <= 0) {
+    posX = window.innerWidth * 0.75;
+  }
+  if (pos[0] >= window.innerWidth * 0.75) {
+    posX = 0;
+  }
+  if (pos[1] <= 0) {
+    posY = window.innerWidth * 0.75;
+  }
+  if (pos[1] >= window.innerHeight * 0.75) {
+    posY = 0;
+  }
+  return [posX, posY];
+};
+
 module.exports = Game;
