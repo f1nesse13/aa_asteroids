@@ -1,6 +1,6 @@
 /* eslint-disable no-var */
-// Game class - holds asteroids - define CONSTANTS DIM_X DIM_Y NUM_ASTEROIDS
-var Asteroid = require('./asteroid.js');
+// Game class - bundles asteroids/player inside array and iterates over them to draw/move them
+const Asteroid = require('./asteroid.js');
 
 var Game = function() {
   this.dim_x = Game.DIM_X;
@@ -15,8 +15,8 @@ Game.DIM_Y = window.innerHeight * 0.75;
 Game.NUM_ASTEROIDS = 15;
 Game.prototype.addAsteroids = function() {
   // create new Asteroid Objects with a random position then pushes into the Game instance's asteroids array
-  for (var i = 0; i < Game.NUM_ASTEROIDS; i++) {
-    var asteroid = new Asteroid({ pos: this.randomPosition() });
+  for (let i = 0; i < Game.NUM_ASTEROIDS; i++) {
+    const asteroid = new Asteroid({ pos: this.randomPosition() });
     this.asteroids.push(asteroid);
   }
 };
