@@ -11,8 +11,8 @@ GameView.prototype.start = function() {
   context = this.ctx;
   setInterval(function() {
     game.draw(context);
-    game.moveObjects(context);
-  }, 200);
+    game.step(context);
+  }, 150);
 };
 
 module.exports = GameView;
