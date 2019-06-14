@@ -12,7 +12,7 @@ var Game = function() {
 
 Game.DIM_X = window.innerWidth * 0.75;
 Game.DIM_Y = window.innerHeight * 0.75;
-Game.NUM_ASTEROIDS = 10;
+Game.NUM_ASTEROIDS = 2;
 
 Game.prototype.addAsteroids = function() {
   // create new Asteroid Objects with a random position then pushes into the Game instance's asteroids array
@@ -62,6 +62,28 @@ Game.prototype.wrap = function(pos) {
     posY = 0;
   }
   return [posX, posY];
+};
+
+Game.prototype.checkCollision = function() {
+  var collisions = [];
+  for (let i = 0; i < this.asteroids.length; i++) {
+    for (let y = 0; y < this.asteroids.length; y++) {
+      if (i !== y && this.asteroids[i].isCollideWith(this.asteroids[y])) {
+        if (!collisions.includes(this.asteroids[i])) {
+          collisions.push(this.asteroids[i]);
+        }
+        if (!collisions.includes(this.asteroids[y])) {
+          collisions.push(this.asteroids[y]);
+        }
+      }
+    }
+  }
+  return collisions.length > 0 ? alert('BOOM SHAKALAKA') : false;
+};
+
+Game.prototype.step = function(ctx) {
+  this.moveObjects(ctx);
+  this.checkCollision();
 };
 
 module.exports = Game;
