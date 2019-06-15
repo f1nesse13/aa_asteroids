@@ -26,5 +26,9 @@ MovingObject.prototype.isCollideWith = function(otherObj) {
 
   return distance < collisionDistance;
 };
+// ----- NEEDS FIX -----
+MovingObject.prototype.collideWith = function(otherObj) {
+  this.game.remove(this, otherObj);
+};
 
 module.exports = MovingObject;
