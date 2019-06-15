@@ -1,6 +1,7 @@
 /* eslint-disable no-var */
 // Game class - bundles asteroids/player inside array and iterates over them to draw/move them
-const Asteroid = require('./asteroid.js');
+var Asteroid = require('./asteroid.js');
+var Ship = require('./ship.js');
 
 var Game = function() {
   this.dim_x = Game.DIM_X;
@@ -16,11 +17,16 @@ Game.DIM_Y = window.innerHeight * 0.75;
 Game.NUM_ASTEROIDS = 20;
 
 Game.prototype.addAsteroids = function() {
-  // create new Asteroid Objects with a random position then pushes into the Game instance's asteroids array
+  // create new Asteroid Objects with a random position then pushes into the Game     instance's asteroids array
   for (let i = 0; i < Game.NUM_ASTEROIDS; i++) {
-    const asteroid = new Asteroid({ pos: this.randomPosition(), game: this });
+    var asteroid = new Asteroid({ pos: this.randomPosition(), game: this });
     this.asteroids.push(asteroid);
   }
+  return this.asteroids;
+};
+
+Game.prototype.allObjects = function() {
+  this.addAsteroids().push(this.ship);
 };
 
 Game.prototype.randomPosition = function() {
@@ -34,7 +40,7 @@ Game.prototype.draw = function(ctx) {
   // clears canvas
   ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
   // redraws all asteroids inside array
-  for (let i = 0; i < this.asteroids.length; i++) {
+  for (let i = 0; i < this.allObjects.length; i++) {
     this.asteroids[i].draw(ctx);
   }
 };

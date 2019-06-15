@@ -9,6 +9,7 @@ var Ship = function(options) {
     color: Ship.COLOR,
     game: options.game
   });
+
   Util.inherits(Ship, MovingObject);
   Ship.RADIUS = 25;
   Ship.COLOR = '#ddd';

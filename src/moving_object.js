@@ -21,13 +21,15 @@ MovingObject.prototype.move = function(ctx) {
 };
 
 MovingObject.prototype.isCollideWith = function(otherObj) {
+  // Checks distances between objects to see if they collided
   var distance = Util.distance(this.pos, otherObj.pos);
   var collisionDistance = this.radius + otherObj.radius;
 
   return distance < collisionDistance;
 };
-// ----- NEEDS FIX -----
+
 MovingObject.prototype.collideWith = function(otherObj) {
+  // function calls to remove both objects that have collided
   this.game.remove(this, otherObj);
 };
 
