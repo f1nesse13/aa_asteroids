@@ -15,6 +15,7 @@ MovingObject.prototype.draw = function(ctx) {
   ctx.fillStyle = this.color;
   ctx.fill();
 };
+
 MovingObject.prototype.move = function(ctx) {
   // sets position to wrap return value - if off canvas set to 0 || 'max'
   this.pos = this.game.wrap([(this.pos[0] += this.vel[0]), (this.pos[1] += this.vel[1])]);
@@ -29,8 +30,8 @@ MovingObject.prototype.isCollideWith = function(otherObj) {
 };
 
 MovingObject.prototype.collideWith = function(otherObj) {
-  // function calls to remove both objects that have collided
-  this.game.remove(this, otherObj);
+  // // function calls to remove both objects that have collided
+  // this.game.remove(this, otherObj);
 };
 
 module.exports = MovingObject;
