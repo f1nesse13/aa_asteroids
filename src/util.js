@@ -1,4 +1,3 @@
-/* eslint-disable no-var */
 var Util = {
   // sets up inheritance between a child and parent class
   inherits(child, parent) {
@@ -15,6 +14,10 @@ var Util = {
   // Scale the length of a vector by the given amount.
   scale(vec, m) {
     return [vec[0] * m, vec[1] * m];
+  },
+  // calculate the distance between the two objects
+  distance(pos1, pos2) {
+    return Math.sqrt(((pos1[0] - pos2[0]) ** 2) + ((pos1[1] - pos2[1]) ** 2));
   }
 };
 
