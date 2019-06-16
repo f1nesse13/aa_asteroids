@@ -29,8 +29,8 @@ GameView.prototype.bindKeyHandlers = function() {
   key('d', function() {
     game.ship.power([1, 0]);
   });
-  key('shift', function() {
-    game.ship.fire();
+  key('l', function() {
+    game.ship.fireBullet();
   });
 };
 

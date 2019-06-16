@@ -2,6 +2,7 @@
 // Game class - bundles asteroids/player inside array and iterates over them to draw/move them
 var Asteroid = require('./asteroid.js');
 var Ship = require('./ship.js');
+var Bullet = require('./bullet.js');
 
 var Game = function() {
   this.dim_x = Game.DIM_X;
@@ -10,6 +11,7 @@ var Game = function() {
   this.asteroids = [];
   this.ship = new Ship({ pos: this.randomPosition(), game: this });
   this.addAsteroids();
+  this.bullets = [];
 };
 
 Game.DIM_X = window.innerWidth * 0.75;
@@ -25,7 +27,7 @@ Game.prototype.addAsteroids = function() {
 };
 
 Game.prototype.allObjects = function() {
-  return this.asteroids.concat(this.ship);
+  return [].concat(this.asteroids, this.ship, this.bullets);
 };
 
 Game.prototype.randomPosition = function() {
@@ -85,8 +87,24 @@ Game.prototype.step = function(ctx) {
   this.checkCollision();
 };
 Game.prototype.remove = function(obj, otherObj) {
-  this.asteroids.splice(this.asteroids.indexOf(obj), 1);
-  this.asteroids.splice(this.asteroids.indexOf(otherObj), 1);
+  this.asteroids.splice(this.allObjects().indexOf(obj), 1);
+  this.asteroids.splice(this.allObjects().indexOf(otherObj), 1);
+};
+
+Game.prototype.add = function(obj) {
+  if (obj instanceof Asteroid) {
+    this.asteroids.push(obj);
+  }
+  if (obj instanceof Bullet) {
+    this.bullets.push(obj);
+  }
+};
+
+Game.prototype.remove = function(obj) {
+  if (obj instanceof Asteroid) {
+    var asteroidIndex = this.asteroids.indexOf(obj);
+    this.asteroids.splice(asteroidIndex, 1);
+  }
 };
 
 module.exports = Game;
