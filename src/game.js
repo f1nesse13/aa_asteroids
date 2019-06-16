@@ -14,7 +14,7 @@ var Game = function() {
 
 Game.DIM_X = window.innerWidth * 0.75;
 Game.DIM_Y = window.innerHeight * 0.75;
-Game.NUM_ASTEROIDS = 10;
+Game.NUM_ASTEROIDS = 5;
 
 Game.prototype.addAsteroids = function() {
   // create new Asteroid Objects with a random position then pushes into the Game     instance's asteroids array
@@ -46,7 +46,7 @@ Game.prototype.draw = function(ctx) {
 
 Game.prototype.moveObjects = function(ctx) {
   // simulates movement of objects on canvas
-  for (let i = 0; i < this.asteroids.length; i++) {
+  for (let i = 0; i < this.allObjects().length; i++) {
     this.allObjects()[i].move(ctx);
   }
   this.draw(ctx);

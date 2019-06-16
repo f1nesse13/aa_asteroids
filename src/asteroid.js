@@ -14,7 +14,7 @@ var Asteroid = function(options) {
 
 Util.inherits(Asteroid, MovingObject);
 
-Asteroid.RADIUS = 40;
+Asteroid.RADIUS = 30;
 Asteroid.COLOR = '#a33';
 
 Asteroid.prototype.collideWith = function(otherObj) {

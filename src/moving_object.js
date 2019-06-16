@@ -32,6 +32,7 @@ MovingObject.prototype.isCollideWith = function(otherObj) {
 MovingObject.prototype.collideWith = function(otherObj) {
   // // function calls to remove both objects that have collided
   // this.game.remove(this, otherObj);
+  // ------------- will hold code to remove asteroids when hit by bullets -----------
 };
 
 module.exports = MovingObject;
